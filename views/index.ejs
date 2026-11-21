@@ -40,19 +40,19 @@
             <section class="stats">
                 <div class="card" id="card-revenue">
                     <div class="stat-title">Revenue</div>
-                    <div class="stat-value green"><span class="revenue-amt"><!--$48,250--></span></div>
+                    <div class="stat-value green"><span class="revenue-amt"><%= money(revenue) %></span></div>
                 </div>
                 <div class="card" id="card-customers">
                     <div class="stat-title">Customers</div>
-                    <div class="stat-value blue"><span id="customer-num"><!--1,284--></span></div>
+                    <div class="stat-value blue"><span id="customer-num"><%= totalCustomers.toLocaleString("en-US") %></span></div>
                 </div>
                 <div class="card" id="card-orders">
                     <div class="stat-title">Orders</div>
-                    <div class="stat-value orange"><span id="orders-amt"><!--342--></span></div>
+                    <div class="stat-value orange"><span id="orders-amt"><%= totalOrders.toLocaleString("en-US") %></span></div>
                 </div>
                 <div class="card" id="card-issues">
                     <div class="stat-title">Issues</div>
-                    <div class="stat-value red"><span id="issues-amt"><!--12--></span></div>
+                    <div class="stat-value red"><span id="issues-amt"><%= issuesCount %></span></div>
                 </div>
             </section>
 
@@ -68,7 +68,7 @@
 
                             <div id="tab-overview">
                                 <h3>Monthly Performance</h3>
-                                <p>Revenue is currently at <strong class="revenue-amt"> <!--$48,250--></strong></p>
+                                <p>Revenue is currently at <strong class="revenue-amt"><%= money(revenue) %></strong></p>
                             </div>
 
                             <div id="tab-sales">

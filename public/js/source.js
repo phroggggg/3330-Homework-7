@@ -3,13 +3,6 @@ $(function () {
     // Feel free to modify/remove the JS objects below.
     // *********************************************************************
 
-    let revenueAmt = "$35,800";
-    let customerNum = "1,284";
-    let ordersAmt = "342";
-    let issuesAmt = "12";
-    let username = "UTRGV Vaqueros";
-    let notifAmt = 3;
-
     const customers = [
         {
             "name": "Alice Johnson",
@@ -100,18 +93,6 @@ $(function () {
     // There are 13 requirements to implement. 
     const userNameObj = $("#username");
     userNameObj.append(`${username}`);
-
-    const cardRevenue = $(".revenue-amt");   // this must select the class .revenue-amt, which will affect two elements. So count this 2 times.
-    cardRevenue.append(`${revenueAmt}`);
-
-    const cardCustomers = $("#customer-num");
-    cardCustomers.append(`${customerNum}`);
-
-    const cardOrders = $("#orders-amt");
-    cardOrders.append(`${ordersAmt}`);
-
-    const cardIssues = $("#issues-amt");
-    cardIssues.append(`${issuesAmt}`);
 
     const notificationNumber = $("#notification-num");
     notificationNumber.append(`${notifAmt}`);
