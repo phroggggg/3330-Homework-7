@@ -183,6 +183,10 @@ th {
 }
 
 .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -203,4 +207,9 @@ th {
 .pagination a.disabled {
     pointer-events: none;
     opacity: 0.4;
+}
+
+.pagination .ellipsis {
+    margin: 3px;
+    color: #777;
 }

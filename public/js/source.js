@@ -3,69 +3,6 @@ $(function () {
     // Feel free to modify/remove the JS objects below.
     // *********************************************************************
 
-    const customers = [
-        {
-            "name": "Alice Johnson",
-            "email": "alice@example.com",
-            "status": "Active",
-            "joined": "09/10/2026"
-        },
-        {
-            "name": "Robert Smith",
-            "email": "robert@example.com",
-            "status": "Pending",
-            "joined": "09/12/2026"
-        },
-        {
-            "name": "Maria Garcia",
-            "email": "maria@example.com",
-            "status": "Active",
-            "joined": "09/15/2026"
-        }
-    ];
-
-    const activities = [
-        {
-            "message" : "New customer registered"
-        },
-        {
-            "message" : "Order #10482 completed"
-        },
-        {
-            "message" : "Payment received"
-        },
-        {
-            "message" : "Support ticket created"
-        }
-    ];
-
-    // There are 13 requirements to implement. 
-    const userNameObj = $("#username");
-    userNameObj.append(`${username}`);
-
-    customers.forEach(customer => {
-        const row = $("<tr>");
-
-        var statusClass;
-            if (customer.status.toLowerCase() === "active"){
-                statusClass = "status-active";
-            } else {
-                statusClass = "status-pending";
-            }
-        row.html(`
-            <td>${customer.name}</td>
-            <td>${customer.email}</td>
-            <td>
-                <span class="status ${statusClass}">
-                    ${customer.status}
-                </span>
-            </td>
-            <td>${customer.joined}</td>
-        `);
-
-        tableBody.append(row);
-    });
-
     // All six jQuery UI functions
 
     $("button").button();

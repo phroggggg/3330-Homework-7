@@ -112,27 +112,27 @@
                             </thead>
 
                             <tbody id="customerTableBody">
-                                <!-- <tr>
-                                    <td>Alice Johnson</td>
-                                    <td>alice@example.com</td>
-                                    <td><span class="status status-active">Active</span></td>
-                                    <td>09/10/2026</td>
-                                </tr>
+                                <% customers.forEach(c => { %>
                                 <tr>
-                                    <td>Robert Smith</td>
-                                    <td>robert@example.com</td>
-                                    <td><span class="status status-pending">Pending</span></td>
-                                    <td>09/12/2026</td>
+                                    <td><%= c.name %></td>
+                                    <td><%= c.email %></td>
+                                    <td><span class="status <%= c.status.toLowerCase() === 'active' ? 'status-active' : 'status-pending' %>"><%= c.status %></span></td>
+                                    <td><%= formatDate(c.datejoined) %></td>
                                 </tr>
-
-                                <tr>
-                                    <td>Maria Garcia</td>
-                                    <td>maria@example.com</td>
-                                    <td><span class="status status-active">Active</span></td>
-                                    <td>09/15/2026</td>
-                                </tr> -->
+                                <% }) %>
                             </tbody>
-                        </table>                        
+                        </table>      
+                        <div class="pagination">
+                            <a href="/?page=<%= currentPage - 1 %>#customerTable" class="<%= currentPage === 1 ? 'disabled' : '' %>">Previous</a>
+                            <% pages.forEach(p => { %>
+                                <% if (p === "...") { %>
+                                    <span class="ellipsis">&hellip;</span>
+                                <% } else { %>
+                                    <a href="/?page=<%= p %>#customerTable" class="<%= currentPage === p ? 'active' : '' %>"><%= p %></a>
+                                <% } %>
+                            <% }) %>
+                            <a href="/?page=<%= currentPage + 1 %>#customerTable" class="<%= currentPage === totalPages ? 'disabled' : '' %>">Next</a>
+                        </div>                  
                     </section>
                 </div>
 
