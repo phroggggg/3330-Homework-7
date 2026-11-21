@@ -18,10 +18,10 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+const limit = 10; // customers per page
+
 const money = (n) =>
   "$" + Number(n).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-const limit = 10; // customers per page
 
 // DATE columns come back as JS Dates; format as MM/DD/YYYY
 const formatDate = (d) => {
@@ -46,23 +46,23 @@ const buildPages = (current, total) => {
 
 app.get("/", async (req, res) => {
   try {
-    const page = Math.max(Number(req.query.page) || 1, 1);
-    const offset = (page - 1) * limit;
-
     const customerCount = await db.query("SELECT count(*) FROM customers");
     const totalCustomers = Number(customerCount.rows[0].count);
     const totalPages = Math.max(Math.ceil(totalCustomers / limit), 1);
+
+    const page = Math.max(Number(req.query.page) || 1, 1);
+    const offset = (page - 1) * limit;
 
     const customers = await db.query(
       "SELECT * FROM customers ORDER BY id LIMIT $1 OFFSET $2",
       [limit, offset]
     );
     const revenue = await db.query("SELECT sum(saleamount) FROM sales");
-    const orders = await db.query("SELECT count(quantity) FROM orders");
-    const issuesCount = await db.query("SELECT count(id) FROM alerts WHERE type = 'issues'");
     const sales = await db.query(`SELECT products.name, sales.quantity, sales.saleamount FROM sales
        LEFT JOIN products ON sales.productid = products.id ORDER BY sales.id ASC`
     );
+    const orders = await db.query("SELECT count(quantity) FROM orders");
+    const issuesCount = await db.query("SELECT count(id) FROM alerts WHERE type = 'issues'");
     const issues = await db.query("SELECT * FROM alerts WHERE type = 'issues'");
     const notificationsCount = await db.query("SELECT count(id) FROM alerts WHERE type = 'notifications'");
     const notifications = await db.query("SELECT * FROM alerts WHERE type = 'notifications'");
