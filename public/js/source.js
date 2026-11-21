@@ -24,24 +24,6 @@ $(function () {
         }
     ];
 
-    const sales = [
-        {
-            "product": "Product A",
-            "quantity": "124",
-            "revenue": "$12,400"
-        },
-        {
-            "product": "Product B",
-            "quantity": "98",
-            "revenue": "$9,800"
-        },
-        {
-            "product": "Product C",
-            "quantity": "75",
-            "revenue": "$7,500"
-        },
-    ];
-
     const activities = [
         {
             "message" : "New customer registered"
@@ -57,47 +39,9 @@ $(function () {
         }
     ];
 
-    const messages = [
-        {
-            "messsage" : "All systems operational"
-        },
-        {
-            "messsage" : "All settings loaded for this system"
-        }
-    ];
-
-    const notifications = [
-        {
-            "messsage": "A new shipment is expected to arrive on Sep 30, 2026"
-        },
-        {
-            "messsage": "There are 12 outstanding issues with last week's orders"
-        },
-        {
-            "messsage": "Three new customers joined our platform in the last month"
-        },
-    ];
-
-    const tasks = [
-       {
-            "messsage": "Review orders"
-        },
-        {
-            "messsage": "Contact customer"
-        },
-        {
-            "messsage": "Generate report"
-        },
-    ]
-
     // There are 13 requirements to implement. 
     const userNameObj = $("#username");
     userNameObj.append(`${username}`);
-
-    const notificationNumber = $("#notification-num");
-    notificationNumber.append(`${notifAmt}`);
-
-    const tableBody = $("#customerTableBody");
 
     customers.forEach(customer => {
         const row = $("<tr>");
@@ -121,57 +65,6 @@ $(function () {
 
         tableBody.append(row);
     });
-
-   
-    const salesTableBody = $("#salesTableBody");
-
-    sales.forEach(sale => {
-        const row = $("<tr>");
-
-        row.html(`
-            <td>${sale.product}</td>
-            <td>${sale.quantity}</td>
-            <td>${sale.revenue}</td>
-        `);
-
-        salesTableBody.append(row);
-    });
-
-    const activityList = $("#activity-list");
-
-    activities.forEach(activity => {
-        const li = $("<li>");
-        li.html(`${activity.message}`);
-        activityList.append(li);
-    });
-
- 
-    const systemStatusList = $("#system-status-list");
-
-    messages.forEach(msg => {
-        const li = $("<li>");
-        li.html(`${msg.messsage}`);
-        systemStatusList.append(li);
-    });
-
-
-    const notificationsList = $("#notifications-list");
-
-    notifications.forEach(notif => {
-        const li = $("<li>");
-        li.html(`${notif.messsage}`);
-        notificationsList.append(li);
-    });
-
-
-    const tasksList = $("#tasks-list");
-
-    tasks.forEach(task => {
-        const li = $("<li>");
-        li.html(`${task.messsage}`);
-        tasksList.append(li);
-    });
-
 
     // All six jQuery UI functions
 
